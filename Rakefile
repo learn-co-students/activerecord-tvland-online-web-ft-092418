@@ -24,3 +24,10 @@ namespace :db do
     Pry.start
   end
 end
+
+task :reset_db do
+  puts "dropping database..."
+  system("rm db/ar.db && rm db/schema.rb")
+  puts 'migrating database'
+  system("rake db:migrate")
+end
